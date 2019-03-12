@@ -1,52 +1,20 @@
 <template>
-    <div id="app">
-        <Header/>
-        <AddTodo/>
-        <Todo v-bind:toDos = toDos v-on:del-todo="deleteTodo"/>
-    </div>
+  <div id="app">
+    <Header/>
+    <router-view/>
+  </div>
 </template>
 
 <script>
-import Todo from './components/Todo'
-import Header from './components/layout/Header'
-import AddTodo from './components/AddTodo'
+  import Header from './components/layout/Header'
+  export default {
+      name: 'app',
+      components: {
+          Header
 
-    export default {
-        name: 'app',
-        components: {
-            Todo,
-            Header,
-            AddTodo
-        },
-        data() {
-            return {
-                toDos: [
-                    {
-                        id: 1,
-                        title: "Todo One",
-                        completed: false
-                    },
-                    {
-                        id: 2,
-                        title: "Todo Two",
-                        completed: true
-                    },
-                    {
-                        id: 3,
-                        title: "Todo Three",
-                        completed: false
-                    }
-                ]
-            }
-        },
-        methods: {
-            deleteTodo(id) {
-                this.toDos = this.toDos.filter(todo => todo.id !== id)
-            }
-        }
-    }
+      }
+  }
 </script>
-
 <style>
     * {
         box-sizing: border-box;
