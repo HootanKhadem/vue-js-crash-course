@@ -1,6 +1,6 @@
 <template>
     <header class="header">
-        <h1>TodoList</h1>
+        <h1>{{ title }}</h1>
         <div id="nav">
             <router-link to="/">Home</router-link>
             <router-link to="/about">About</router-link>
@@ -9,8 +9,13 @@
 </template>
 
 <script>
+    import { mapState } from 'vuex';
+
     export default {
-        name: "Header"
+        name: "Header",
+        computed: mapState([
+            'title'
+        ])
     }
 </script>
 

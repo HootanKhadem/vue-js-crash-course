@@ -8,26 +8,30 @@
 </template>
 
 <script>
+    import { mapMutations } from 'vuex';
     export default {
         name: "AddTodo",
         data() {
             return {
                 title: ''
-            }
+            };
         },
         methods: {
+            ...mapMutations([
+                'ADD_TODO'
+            ]),
+
             addTodo(e) {
                 e.preventDefault();
                 const newTodo = {
                     title: this.title,
                     completed: false
                 };
-
-                this.$emit('add-todo', newTodo);
+                this.ADD_TODO(newTodo);
                 this.title = "";
             }
         }
-    }
+    };
 </script>
 
 <style scoped>
